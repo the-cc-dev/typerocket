@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Http;
 
+use App\Http\Middleware\VerifyNonce;
 use TypeRocket\Http\Middleware\AuthAdmin;
 use TypeRocket\Http\Middleware\AuthRead;
 use TypeRocket\Http\Middleware\CanManageCategories;
@@ -14,25 +14,19 @@ class Kernel extends \TypeRocket\Http\Kernel
 {
     public $middleware = [
         'hookGlobal' => [],
-        'resourceGlobal' =>
-            [
-                Middleware\VerifyNonce::class
-            ],
-        'noResource' =>
+        'restApiFallback' =>
             [ AuthAdmin::class ],
+        'resourceGlobal' =>
+            [  VerifyNonce::class ],
         'user' =>
             [ IsUserOrCanEditUsers::class ],
         'post' =>
-            [ OwnsPostOrCanEditPosts::class ],
-        'page' =>
             [ OwnsPostOrCanEditPosts::class ],
         'comment' =>
             [ OwnsCommentOrCanEditComments::class ],
         'option' =>
             [ CanManageOptions::class ],
-        'category' =>
+        'term' =>
             [ CanManageCategories::class ],
-        'tag' =>
-            [ CanManageCategories::class ]
     ];
 }

@@ -5,14 +5,14 @@ return [
     | Enabled Plugins
     |--------------------------------------------------------------------------
     |
-    | The folder names of the TypeRocket plugins you wish to enable.
+    | The class names of the TypeRocket plugins you wish to enable.
     |
     */
     'plugins' => [
-        'seo',
-        'dev',
-        'theme-options',
-        'builder',
+        '\TypeRocketSEO\Plugin',
+        '\TypeRocketPageBuilder\Plugin',
+        '\TypeRocketThemeOptions\Plugin',
+        '\TypeRocketDev\Plugin',
     ],
 
     /*
@@ -58,11 +58,27 @@ return [
     |
     */
     'class' => [
-        'icons' => \TypeRocket\Elements\Icons::class,
-        'user' => \App\Models\User::class,
-        'form' => \TypeRocket\Elements\Form::class
+        'icons' => '\TypeRocket\Elements\Icons',
+        'user' => '\App\Models\User',
+        'form' => '\TypeRocket\Elements\Form'
     ],
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Template Engine
+    |--------------------------------------------------------------------------
+    |
+    | The template engine used to build views for the front-end and admin.
+    |
+    | Options:
+    |    - \TypeRocket\Template\TemplateEngine
+    |    - \TypeRocket\Template\TwigTemplateEngine
+    |
+    */
+    'template_engine' => [
+        'front' => '\TypeRocket\Template\TemplateEngine',
+        'admin' => '\TypeRocket\Template\TemplateEngine',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -88,6 +104,6 @@ return [
     | browser caches.
     |
     */
-    'assets' => '1.0.2'
+    'assets' => '4.0.8'
 
 ];

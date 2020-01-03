@@ -25,6 +25,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Cache
+    |--------------------------------------------------------------------------
+    |
+    | The PATH where files are to be cached.
+    |
+    */
+    'cache'  => TR_PATH . '/storage/cache',
+
+    /*
+    |--------------------------------------------------------------------------
     | Resources
     |--------------------------------------------------------------------------
     |
@@ -109,11 +119,14 @@ return [
     | Migrations
     |--------------------------------------------------------------------------
     |
-    | The PATHs for migrations and run migrations.
+    | The PATHs for migrations and run migrations. Drivers include: file
     |
     */
     'migrate'  => [
-        'migrations' => TR_PATH . '/sql/migrations',
+        'driver' => 'file',
+        'migrations' => [
+            TR_PATH . '/sql/migrations',
+        ],
         'run' => TR_PATH . '/sql/run',
     ]
 
